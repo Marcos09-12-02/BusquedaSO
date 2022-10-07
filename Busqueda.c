@@ -28,7 +28,7 @@ int main(int argc, char **argv)
 	}
 	
 	char consulta [80];
-	strcpy (consulta,"select partidas_jugadas.puntos from partidas_jugadas,jugador where jugador.nombre='Juan' and jugador.id=partidas_jugadas.partida_id and partidas_jugadas.ganador=1;");
+	strcpy (consulta,"select partidas_jugadas.puntos from partidas_jugadas,jugador,partida where jugador.username='Juan' and jugador.id=partidas_jugadas.jugador_id and partidas_jugadas.partida_id=partida.id and partida.ganador=jugador.id;");
 	
 	err=mysql_query (conn, consulta);
 	if (err!=0) {
